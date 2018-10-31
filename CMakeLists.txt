@@ -34,9 +34,6 @@ target_include_directories(yojimbo_plugin PRIVATE ${GLM_INCLUDE_DIRS})
 
 target_compile_options(yojimbo_plugin PRIVATE ${YOJIMBO_PLUGIN_COMPILER_FLAGS})
 
-add_dependencies(yojimbo_plugin yojimbo_target)
-add_dependencies(yojimbo_plugin sodium_target)
-
 target_link_libraries(yojimbo_plugin yojimbo)
 target_link_libraries(yojimbo_plugin sodium)
 target_link_libraries(yojimbo_plugin mbedtls)
