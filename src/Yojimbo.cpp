@@ -140,13 +140,13 @@ void send(::yojimbo::Client& client, const std::vector<uint8>& data)
 		message->sequence = (uint16_t) numMessagesSentToServer;
 		//const int blockSize = 1 + ( int( numMessagesSentToServer ) * 33 ) % MaxBlockSize;
 		std::cout << "SENDING 2: " << message->sequence << ", " << data.size() << std::endl;
-		uint8* blockData = client.AllocateBlock(data.size());
+		uint8* blockData = client.AllocateBlock(static_cast<int32>(data.size()));
 		std::cout << "SENDING 3" << std::endl;
 		if (blockData)
 		{
 			std::copy(data.begin(), data.end(), blockData);
 			
-			client.AttachBlockToMessage(message, blockData, data.size());
+			client.AttachBlockToMessage(message, blockData, static_cast<int32>(data.size()));
 			std::cout << "SENDING" << std::endl;
 			client.SendMessage(RELIABLE_ORDERED_CHANNEL, message);
 			numMessagesSentToServer++;
@@ -184,12 +184,12 @@ void send(::yojimbo::Server& server, const std::vector<uint8>& data)
 			if (message)
 			{
 				message->sequence = (uint16_t) numMessagesSentToClient;
-				uint8* blockData = server.AllocateBlock(i, data.size());
+				uint8* blockData = server.AllocateBlock(i, static_cast<int32>(data.size()));
 				if (blockData)
 				{
 					std::copy(data.begin(), data.end(), blockData);
 					
-					server.AttachBlockToMessage(i, message, blockData, data.size());
+					server.AttachBlockToMessage(i, message, blockData, static_cast<int32>(data.size()));
 					server.SendMessage(i, RELIABLE_ORDERED_CHANNEL, message);
 					numMessagesSentToClient++;
 				}

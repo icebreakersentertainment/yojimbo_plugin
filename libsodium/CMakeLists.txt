@@ -4,8 +4,8 @@ set(OUTPUT_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libsodium/src/libsodium/.libs/lib
 set(BUILD_COMMAND ./autogen.sh && ./configure && make)
 
 if(MSVC)
-  set(OUTPUT_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libsodium/bin/x64/Release/v141/static/libsodium.lib)
-  set(BUILD_COMMAND msbuild /p:Configuration=StaticRelease /p:Platform=x64 builds/msvc/vs2017/libsodium.sln)
+  set(OUTPUT_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libsodium/bin/x64/Release/v142/static/libsodium.lib)
+  set(BUILD_COMMAND msbuild /p:Configuration=StaticRelease /p:Platform=x64 builds/msvc/vs2019/libsodium.sln)
 elseif(APPLE)
   set(OUTPUT_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libsodium/src/libsodium/.libs/libsodium.a)
 endif()
