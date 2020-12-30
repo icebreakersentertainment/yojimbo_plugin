@@ -23,11 +23,10 @@ endif()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-add_subdirectory(yojimbo)
-add_subdirectory(libsodium)
+find_package(MbedTLS REQUIRED)
+find_package(libsodium REQUIRED)
 
-option(ENABLE_TESTING "Build mbed TLS tests." OFF)
-add_subdirectory(mbedtls/mbedtls)
+add_subdirectory(yojimbo)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -49,8 +48,6 @@ target_compile_definitions(yojimbo_plugin PRIVATE ${YOJIMBO_PLUGIN_DEFINITIONS})
 target_compile_options(yojimbo_plugin PRIVATE ${YOJIMBO_PLUGIN_COMPILER_FLAGS})
 
 target_link_libraries(yojimbo_plugin PRIVATE yojimbo)
-target_link_libraries(yojimbo_plugin PRIVATE sodium)
-target_link_libraries(yojimbo_plugin PRIVATE mbedtls)
-target_link_libraries(yojimbo_plugin PRIVATE mbedx509)
-target_link_libraries(yojimbo_plugin PRIVATE mbedcrypto)
+target_link_libraries(yojimbo_plugin PRIVATE libsodium::libsodium)
+target_link_libraries(yojimbo_plugin PRIVATE MbedTLS::MbedTLS)
 target_link_libraries(yojimbo_plugin PRIVATE glm::glm)

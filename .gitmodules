@@ -1,12 +1,6 @@
 [submodule "yojimbo/yojimbo"]
 	path = yojimbo/yojimbo
 	url = https://github.com/icebreakersentertainment/yojimbo.git
-[submodule "mbedtls/mbedtls"]
-	path = mbedtls/mbedtls
-	url = https://github.com/ARMmbed/mbedtls.git
-[submodule "libsodium/libsodium"]
-	path = libsodium/libsodium
-	url = https://github.com/jedisct1/libsodium.git
 [submodule "ice_engine/ice_engine"]
 	path = ice_engine/ice_engine
 	url = https://github.com/icebreakersentertainment/ice_engine.git
